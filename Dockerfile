@@ -2,15 +2,15 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Install System Tools & Node.js
+# Install Node.js, Git, and System Tools
 RUN apt-get update && apt-get install -y \
     curl \
     git \
     build-essential \
     procps \
-    && rm -rf /var/lib/apt/lists/* \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
